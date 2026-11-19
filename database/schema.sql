@@ -41,3 +41,29 @@ CREATE TABLE incidents (
         CHECK (status IN ('reported', 'in_progress', 'resolved')),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+-- Notifications table
+CREATE TABLE notifications (
+    notification_id SERIAL PRIMARY KEY,
+
+    user_id INTEGER NOT NULL
+        REFERENCES users(user_id) ON DELETE CASCADE,
+
+    message TEXT NOT NULL,
+
+    notification_type VARCHAR(30) NOT NULL,
+
+    related_type VARCHAR(20),
+
+    related_id INTEGER,
+
+    is_read BOOLEAN NOT NULL DEFAULT FALSE,
+
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Index for faster retrieval of user notifications
+CREATE INDEX idx_notifications_user_created
+ON notifications(user_id, created_at DESC);
+
