@@ -84,3 +84,35 @@ class Incident(db.Model):
         db.DateTime,
         default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
     )
+
+
+class Notification(db.Model):
+    """Stores in-app notifications for users."""
+
+    __tablename__ = "notifications"
+
+    notification_id = db.Column(db.Integer, primary_key=True)
+
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey("users.user_id"),
+        nullable=False
+    )
+
+    message = db.Column(db.Text, nullable=False)
+
+    notification_type = db.Column(
+        db.String(30),
+        nullable=False
+    )
+
+    related_type = db.Column(db.String(20))
+    related_id = db.Column(db.Integer)
+
+    is_read = db.Column(db.Boolean, default=False, nullable=False)
+
+    created_at = db.Column(
+        db.DateTime,
+        default=lambda: datetime.now(timezone.utc).replace(tzinfo=None)
+    )
+
