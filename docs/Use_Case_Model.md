@@ -1,4 +1,4 @@
-﻿# Use Case Model
+# Use Case Model
 ## Campus Resource Management System
 
 ```mermaid
@@ -33,20 +33,9 @@ flowchart TB
     Faculty --> UC9
 
     Admin --> UC1
+    Admin --> UC2
     Admin --> UC6
     Admin --> UC7
     Admin --> UC8
     Admin --> UC9
-    Admin --> UC2
-        UC8 --> Admin
-        UC9 --> Admin
-    end
-        UC8 --> Admin
-        UC9 --> Admin
-    end
-    Admin --> UC6
-    Admin --> UC7
-    Admin --> UC8
-    Admin --> UC9
-    Admin --> UC2
-
+```
