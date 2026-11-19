@@ -1,4 +1,4 @@
-﻿def resource_to_dict(resource):
+def resource_to_dict(resource):
     return {
         "resource_id": resource.resource_id,
         "resource_name": resource.resource_name,
